@@ -1,7 +1,9 @@
+package hospital.view;
+
 import javax.swing.*;
 
-public class Login  extends JFrame {
-    public Login (){
+public class LoginView extends JFrame {
+    public LoginView(){
         //mi ventana
         this.setLayout(null);
         this.setBounds(0,0,800,500);
