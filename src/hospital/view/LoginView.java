@@ -3,28 +3,28 @@ package hospital.view;
 import javax.swing.*;
 import java.awt.*;
 
-class Login extends JFrame {
+class LoginView extends JFrame {
 
-    public Login() {
+    public LoginView() {
         
         setTitle("Acceso");
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Ocupa toda la pantalla
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrar la ventana
+        setLocationRelativeTo(null);
 
         JPanel p = new JPanel();
         p.setLayout(new GridBagLayout());
-        p.setBackground(new Color(245, 245, 245)); // Gris claro
+        p.setBackground(new Color(245, 245, 245));
         GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(10, 10, 10, 10); // Espaciado
+        c.insets = new Insets(10, 10, 10, 10);
         c.fill = GridBagConstraints.HORIZONTAL;
 
         // Crear etiquetas y campos
         JLabel lEmail = new JLabel("Correo:");
-        lEmail.setForeground(new Color(0, 102, 204)); // Azul
+        lEmail.setForeground(new Color(0, 102, 204));
         JTextField tEmail = new JTextField(20);
         JLabel lPass = new JLabel("Contraseña:");
-        lPass.setForeground(new Color(0, 102, 204)); // Azul
+        lPass.setForeground(new Color(0, 102, 204));
         JPasswordField tPass = new JPasswordField(20);
         JButton bAcceder = new JButton("Acceder");
         bAcceder.setBackground(new Color(0, 153, 76));
@@ -49,13 +49,13 @@ class Login extends JFrame {
         c.gridy = 2;
         p.add(bAcceder, c);
 
-        // Añadir el panel al marco
+
         add(p);
         setVisible(true);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(Login::new);
+        SwingUtilities.invokeLater(LoginView::new);
     }
 }
 
