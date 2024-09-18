@@ -8,13 +8,13 @@ public class LoginController {
     public LoginController(LoginView loginView) {
         this.loginView = loginView;
 
-
         this.loginView.addLoginListener(e -> {
-            controlDeLogin();
+            iniciarSesion();
         });
     }
 
-    public void controlDeLogin() {
+
+    public void iniciarSesion() {
         System.out.println("Hola mundo");
     }
 }
