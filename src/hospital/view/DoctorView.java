@@ -3,6 +3,9 @@ package hospital.view;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.ArrayList;
+import hospital.model.Paciente;
+import hospital.services.DataPaciente;
 
 public class DoctorView extends JFrame {
 
@@ -17,7 +20,7 @@ public class DoctorView extends JFrame {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Header Panel
+        // Panel superior (header)
         JPanel headerPanel = new JPanel();
         headerPanel.setPreferredSize(new Dimension(1300, 60));
         headerPanel.setBackground(Color.DARK_GRAY);
@@ -53,24 +56,53 @@ public class DoctorView extends JFrame {
 
         doctorInfoPanel.add(doctorTextPanel, BorderLayout.CENTER);
 
-        headerPanel.add(doctorInfoPanel, BorderLayout.WEST);
+        headerPanel.add(doctorInfoPanel, BorderLayout.EAST);
 
         add(headerPanel, BorderLayout.NORTH);
 
-
+        // Panel lateral
         JPanel menuLateral = componentMenuLateral();
         add(menuLateral, BorderLayout.WEST);
+
+        // Panel central donde se mostrarán los pacientes
+        JPanel pacientePanel = crearPanelPacientes();
+        add(new JScrollPane(pacientePanel), BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-        HashMap<String, String> datos = new HashMap<>();
-        datos.put("nombre", "Dania Luna");
-        datos.put("especialidad", "Doctor General");
+    // Metodo para crear el panel que contiene los datos de los pacientes
+    private JPanel crearPanelPacientes() {
+        JPanel panelPacientes = new JPanel();
+        panelPacientes.setLayout(new GridLayout(0, 4));
 
-        DoctorView doctorView = new DoctorView(datos);
-        doctorView.setVisible(true);
+        // Cabeceras
+        panelPacientes.add(crearCabecera("NOMBRE"));
+        panelPacientes.add(crearCabecera("FECHA NACIMIENTO"));
+        panelPacientes.add(crearCabecera("HORA CITA"));
+        panelPacientes.add(crearCabecera("VISITA"));
+
+        // Obtener lista de pacientes
+        ArrayList<Paciente> pacientes = DataPaciente.ListaPacientes();
+
+        // Añadir datos de los pacientes
+        for (Paciente paciente : pacientes) {
+            panelPacientes.add(new JLabel(paciente.getNombre()));
+            panelPacientes.add(new JLabel(paciente.getFechaNacimiento()));
+            panelPacientes.add(new JLabel(paciente.getHorarioCita()));
+            panelPacientes.add(new JLabel(paciente.getMotivoVisita()));
+        }
+
+        return panelPacientes;
     }
 
+    // Metodo para crear las cabeceras de la tabla
+    private JLabel crearCabecera(String texto) {
+        JLabel label = new JLabel(texto);
+        label.setFont(new Font("Arial", Font.BOLD, 14));
+        label.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        return label;
+    }
+
+    // Panel del menú lateral
     private JPanel componentMenuLateral() {
         JPanel menuPanel = new JPanel();
         menuPanel.setPreferredSize(new Dimension(250, pantalla[1]));
@@ -84,22 +116,23 @@ public class DoctorView extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
 
-     //op del menu
-        menu.add(op("op1"), gbc);
-        menu.add(op("op2"), gbc);
-        menu.add(op("op3"), gbc);
-        menu.add(op("op3"), gbc);
-        menu.add(op("op5"), gbc);
+        //op del menu
+        menu.add(op("Opción 1"), gbc);
+        menu.add(op("Opción 2"), gbc);
+        menu.add(op("Opción 3"), gbc);
+        menu.add(op("Opción 4"), gbc);
+        menu.add(op("Opción 5"), gbc);
 
         menuPanel.add(menu);
         return menuPanel;
     }
 
+    // Método para crear los botones de opción en el menú lateral
     private JButton op(String texto) {
         JButton op = new JButton(texto);
 
         op.addActionListener(e -> {
-            System.out.println("opcion " );
+            System.out.println("Opción seleccionada: " + texto);
         });
 
         return op;
