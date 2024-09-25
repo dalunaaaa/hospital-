@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class LoginView extends JFrame {
-    // Objetos globales
     private JLabel lEmail;
     private JTextField tEmail;
     private JLabel lPass;
@@ -25,7 +24,6 @@ public class LoginView extends JFrame {
         c.insets = new Insets(10, 10, 10, 10);
         c.fill = GridBagConstraints.HORIZONTAL;
 
-        // Correo
         lEmail = new JLabel("Correo:");
         lEmail.setForeground(new Color(0, 102, 204));
         c.gridx = 0;
@@ -36,7 +34,7 @@ public class LoginView extends JFrame {
         c.gridx = 1;
         p.add(tEmail, c);
 
-        // Contraseña
+
         lPass = new JLabel("Contraseña:");
         lPass.setForeground(new Color(0, 102, 204));
         c.gridx = 0;
@@ -47,7 +45,7 @@ public class LoginView extends JFrame {
         c.gridx = 1;
         p.add(tPass, c);
 
-        // Botón "Acceder"
+
         bAcceder = new JButton("Acceder");
         bAcceder.setBackground(new Color(0, 153, 76));
         bAcceder.setForeground(Color.WHITE);
@@ -59,13 +57,19 @@ public class LoginView extends JFrame {
         setVisible(true);
     }
 
-
     public String getEmail() {
-        return tEmail.getText(); // Cambiado para obtener el texto de tEmail
+        return tEmail.getText();
     }
 
+    public String getPassword() {
+        return new String(tPass.getPassword());
+    }
 
     public void addLoginListener(ActionListener listener) {
         bAcceder.addActionListener(listener);
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 }
