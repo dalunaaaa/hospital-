@@ -20,7 +20,7 @@ public class DoctorView extends JFrame {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Panel superior (header)
+        // header
         JPanel headerPanel = new JPanel();
         headerPanel.setPreferredSize(new Dimension(1300, 60));
         headerPanel.setBackground(Color.DARK_GRAY);
@@ -94,7 +94,7 @@ public class DoctorView extends JFrame {
         return panelPacientes;
     }
 
-    // Metodo para crear las cabeceras de la tabla
+    //  Titulos de la tabla
     private JLabel crearCabecera(String texto) {
         JLabel label = new JLabel(texto);
         label.setFont(new Font("Arial", Font.BOLD, 14));
@@ -102,7 +102,7 @@ public class DoctorView extends JFrame {
         return label;
     }
 
-    // Panel del menú lateral
+    //  menú lateral
     private JPanel componentMenuLateral() {
         JPanel menuPanel = new JPanel();
         menuPanel.setPreferredSize(new Dimension(250, pantalla[1]));
@@ -117,11 +117,11 @@ public class DoctorView extends JFrame {
         gbc.gridx = 0;
 
         //op del menu
-        menu.add(op("Opción 1"), gbc);
-        menu.add(op("Opción 2"), gbc);
-        menu.add(op("Opción 3"), gbc);
-        menu.add(op("Opción 4"), gbc);
-        menu.add(op("Opción 5"), gbc);
+        menu.add(op("Consultas del dia"), gbc);
+        menu.add(op("Salas"), gbc);
+        menu.add(op("Farmacia"), gbc);
+        menu.add(op("Pacientes Registrados"), gbc);
+        menu.add(op("citar en otra area"), gbc);
 
         menuPanel.add(menu);
         return menuPanel;
