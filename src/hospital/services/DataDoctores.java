@@ -3,7 +3,7 @@ package hospital.services;
 import hospital.model.DoctorGeneral;
 import java.util.ArrayList;
 
-public class BdDoctores {
+public class DataDoctores {
     public static ArrayList<DoctorGeneral> ListaDocs() {
         ArrayList<DoctorGeneral> doctores = new ArrayList<>();
 

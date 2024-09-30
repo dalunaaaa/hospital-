@@ -1,6 +1,6 @@
 package backEnde;
 
-import hospital.services.BdDoctores;
+import hospital.services.DataDoctores;
 import hospital.model.DoctorGeneral;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ public class BackEnde {
 
     public Map<String, String> validarDatos(String usuario, String contrasena) {
         Map<String, String> resultado = new HashMap<>();
-        ArrayList<DoctorGeneral> doctores = BdDoctores.ListaDocs();
+        ArrayList<DoctorGeneral> doctores = DataDoctores.ListaDocs();
 
         Optional<DoctorGeneral> doctorEncontrado = doctores.stream()
                 .filter(doctor -> doctor.getEmail().equals(usuario))
