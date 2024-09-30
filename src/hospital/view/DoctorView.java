@@ -127,7 +127,7 @@ public class DoctorView extends JFrame {
         return menuPanel;
     }
 
-    // Método para crear los botones de opción en el menú lateral
+
     private JButton op(String texto) {
         JButton op = new JButton(texto);
 

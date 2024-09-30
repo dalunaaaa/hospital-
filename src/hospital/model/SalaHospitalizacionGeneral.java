@@ -1,4 +1,4 @@
-package hospital.model.salas;
+package hospital.model;
 
 public class SalaHospitalizacionGeneral {
 }
