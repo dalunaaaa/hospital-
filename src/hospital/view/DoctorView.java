@@ -60,30 +60,30 @@ public class DoctorView extends JFrame {
 
         add(headerPanel, BorderLayout.NORTH);
 
-        // Panel lateral
+        // menulateral
         JPanel menuLateral = componentMenuLateral();
         add(menuLateral, BorderLayout.WEST);
 
-        // Panel central donde se mostrarán los pacientes
+        // aqui se muestran los paciemtess
         JPanel pacientePanel = crearPanelPacientes();
         add(new JScrollPane(pacientePanel), BorderLayout.CENTER);
     }
 
-    // Metodo para crear el panel que contiene los datos de los pacientes
+    // los datos de los pacientes
     private JPanel crearPanelPacientes() {
         JPanel panelPacientes = new JPanel();
         panelPacientes.setLayout(new GridLayout(0, 4));
 
-        // Cabeceras
+
         panelPacientes.add(crearCabecera("NOMBRE"));
         panelPacientes.add(crearCabecera("FECHA NACIMIENTO"));
         panelPacientes.add(crearCabecera("HORA CITA"));
         panelPacientes.add(crearCabecera("VISITA"));
 
-        // Obtener lista de pacientes
+
         ArrayList<Paciente> pacientes = DataPaciente.ListaPacientes();
 
-        // Añadir datos de los pacientes
+        //datos de los pacientes
         for (Paciente paciente : pacientes) {
             panelPacientes.add(new JLabel(paciente.getNombre()));
             panelPacientes.add(new JLabel(paciente.getFechaNacimiento()));
